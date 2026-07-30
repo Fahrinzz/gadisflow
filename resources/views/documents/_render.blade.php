@@ -31,7 +31,7 @@
         <table class="w100" style="margin-bottom:10px;">
             <tr>
                 <td style="width:55%; vertical-align:top;">
-                    <strong>Attn :</strong>
+                    <span class="attn-label">Attn :</span>
                     <div class="attn">
                         @if($document->attn_name)<div>{{ $document->attn_name }}</div>@endif
                         @if($document->attn_address)<div>{!! nl2br(e($document->attn_address)) !!}</div>@endif
@@ -61,9 +61,9 @@
                     <th style="width:34px;">No.</th>
                     <th class="text-left">Items</th>
                     @if($showPrice)
-                        <th style="width:92px;">Price per unit (RM)</th>
+                        <th style="width:96px;">Price per unit (RM)</th>
                         <th style="width:48px;">Qty</th>
-                        <th style="width:100px;">Total Price (RM)</th>
+                        <th style="width:96px;">Total Price (RM)</th>
                     @else
                         <th style="width:60px;">Qty</th>
                         <th style="width:70px;">Check</th>

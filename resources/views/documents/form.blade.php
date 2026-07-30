@@ -105,7 +105,7 @@
                     <table class="w100" style="margin-bottom:10px;">
                         <tr>
                             <td style="width:55%; vertical-align:top;">
-                                <strong>Attn :</strong>
+                                <span class="attn-label">Attn :</span>
                                 <div class="attn">
                                     <input type="text" name="attn_name" value="{{ old('attn_name', $document->attn_name) }}" placeholder="Recipient name / department">
                                     <textarea name="attn_address" rows="3" placeholder="Recipient address" style="margin-top:4px;">{{ old('attn_address', $document->attn_address) }}</textarea>
@@ -137,9 +137,9 @@
                                 <th style="width:34px;">No.</th>
                                 <th class="text-left">Items</th>
                                 @if($showPrice)
-                                    <th style="width:100px;">Price per unit (RM)</th>
+                                    <th style="width:105px;">Price per unit (RM)</th>
                                     <th style="width:60px;">Qty</th>
-                                    <th style="width:110px;">Total Price (RM)</th>
+                                    <th style="width:105px;">Total Price (RM)</th>
                                 @else
                                     <th style="width:70px;">Qty</th>
                                     <th style="width:80px;">Check</th>

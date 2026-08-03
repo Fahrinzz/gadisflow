@@ -15,7 +15,8 @@
 
         /* Clean pagination for long item lists */
         .sheet table.items { page-break-inside: auto; }
-        .sheet table.items tr { page-break-inside: avoid; }        /* never split a row across pages */
+        .sheet table.items tr { page-break-inside: auto; }         /* let a tall item flow across pages so page 1 fills up */
+        .sheet table.items tfoot tr { page-break-inside: avoid; }  /* but keep the TOTAL row intact */
         .sheet table.items thead { display: table-header-group; }  /* repeat column headers each page */
         .sheet table.items tfoot { display: table-row-group; }     /* TOTAL row shows once, at the end */
 

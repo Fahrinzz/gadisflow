@@ -12,7 +12,16 @@
         font-size: 12px;
         line-height: 1.45;
         -webkit-print-color-adjust: exact;
+        color-adjust: exact;                 /* legacy Firefox */
         print-color-adjust: exact;
+    }
+    /* Force every branded element (pink bands, table headers, yellow TOTAL)
+       to keep its colour when printed — on Chrome, Edge, Firefox & Safari. */
+    .doc, .doc * {
+        -webkit-print-color-adjust: exact;
+        color-adjust: exact;
+        print-color-adjust: exact;
+        box-sizing: border-box;
     }
     .doc .w100 { width: 100%; border-collapse: collapse; }
 

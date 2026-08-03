@@ -5,7 +5,10 @@
     <title>{{ $document->number }}</title>
     @include('documents._styles')
     <style>
-        html, body { margin: 0; background: #e9ecef; }
+        html, body { margin: 0; background: #e9ecef;
+            -webkit-print-color-adjust: exact; color-adjust: exact; print-color-adjust: exact;
+            -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+        * { box-sizing: border-box; }
         .sheet { background: #fff; width: 210mm; min-height: 297mm; margin: 16px auto; padding: 0;
             box-sizing: border-box; box-shadow: 0 1px 8px rgba(0,0,0,.2); }
 
@@ -26,6 +29,9 @@
         .btn-back { background: #6c757d; color: #fff; }
 
         @media print {
+            /* Force ALL backgrounds/colours to print on every browser, even
+               when the user hasn't ticked "Background graphics". */
+            * { -webkit-print-color-adjust: exact !important; color-adjust: exact !important; print-color-adjust: exact !important; }
             html, body { background: #fff; }
             .toolbar { display: none; }
             .sheet { width: auto; min-height: auto; margin: 0; padding: 0; box-shadow: none; }

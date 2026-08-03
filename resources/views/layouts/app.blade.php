@@ -13,7 +13,13 @@
             --ink:#2f2a2c; --muted:#8a7d81; --line:#f0e5e8; --bg:#f6f1f3;
             --radius:14px; --shadow:0 2px 12px rgba(110,32,51,.07), 0 1px 3px rgba(0,0,0,.04);
         }
-        body{ background:var(--bg); color:var(--ink); font-family:"Segoe UI",system-ui,-apple-system,Arial,sans-serif; }
+        /* Cross-browser consistency (Chrome, Firefox, Safari, Edge) */
+        *,*::before,*::after{ box-sizing:border-box; }
+        html{ -webkit-text-size-adjust:100%; text-size-adjust:100%; }
+        body{ background:var(--bg); color:var(--ink);
+            font-family:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+            -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+            -webkit-print-color-adjust:exact; print-color-adjust:exact; }
 
         /* ---- Navbar ---- */
         .appbar{ background:linear-gradient(100deg,var(--maroon),var(--maroon-dk)); box-shadow:0 3px 14px rgba(110,32,51,.28); }

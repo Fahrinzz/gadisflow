@@ -83,11 +83,12 @@
     .doc table.totals .balance .tk,
     .doc table.totals .balance .tv { color: var(--red); font-size: 13px; }
 
-    /* Terms & footer — a bit more breathing room */
+    /* Terms & footer — match the branded T&C layout */
     .doc .band-bottom { padding: 24px 34px 30px; }
-    .doc .terms { white-space: pre-line; font-size: 11px; line-height: 1.9; }
-    .doc .bank { font-weight: normal; margin: 10px 0 0 14px; }
-    .doc .contact { margin-top: 16px; }
-    .doc .thanks { margin-top: 6px; font-weight: normal; }
+    .doc .section-label { font-weight: bold; margin: 0 0 8px; }
+    .doc .terms { white-space: pre-line; font-size: 11px; line-height: 1.85; padding-left: 22px; color: #333; }
+    .doc .bank { font-weight: bold; margin: 4px 0 0 40px; color: #222; }
+    .doc .contact { margin-top: 20px; color: #8a7d81; }
+    .doc .thanks { margin-top: 2px; color: #8a7d81; font-weight: normal; }
     .doc .clearfix::after { content: ""; display: table; clear: both; }
 </style>

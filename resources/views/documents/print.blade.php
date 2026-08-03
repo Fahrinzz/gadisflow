@@ -16,9 +16,11 @@
         .btn-print { background: #dc3545; color: #fff; }
         .btn-back { background: #6c757d; color: #fff; }
         @media print {
-            html, body { background: #fff; }
+            html, body { background: #fff; height: auto; }
             .toolbar { display: none; }
-            .sheet { width: auto; min-height: 100vh; margin: 0; padding: 0; box-shadow: none; }
+            /* 296mm ≈ full A4 height so the footer band reaches the page bottom;
+               min-height (not fixed) lets long item lists flow onto more pages. */
+            .sheet { width: auto; min-height: 296mm; margin: 0; padding: 0; box-shadow: none; overflow: visible; }
             /* margin:0 removes the browser's URL / page-number header & footer */
             @page { size: A4; margin: 0; }
         }

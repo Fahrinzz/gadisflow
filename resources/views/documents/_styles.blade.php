@@ -18,7 +18,7 @@
 
     /* Pink header & footer bands; white body in between */
     .doc .band { background: var(--band); padding: 20px 34px; }
-    .doc .band-top { padding: 22px 34px; }
+    .doc .band-top { padding: 26px 34px; }
     .doc .body { padding: 22px 34px 26px; background: #fff; }
     .doc .mid { padding: 14px 34px; background: #fff; }   /* legacy, kept for safety */
 
@@ -26,7 +26,7 @@
     .doc .head { width: 100%; border-collapse: collapse; }
     .doc .head > tbody > tr > td { vertical-align: middle; }
     .doc .logo-box {
-        width: 150px;
+        width: 195px;
         background: transparent;      /* sits on the pink band, like the brand mark */
         color: var(--maroon);
         text-align: left;
@@ -35,33 +35,32 @@
         line-height: .92;
         font-style: italic;
     }
-    .doc .logo-box img { max-width: 128px; height: auto; display: block; }
-    .doc .logo-box .l1 { font-size: 26px; font-weight: 900; letter-spacing: .5px; }
-    .doc .logo-box .l2 { font-size: 26px; font-weight: 900; letter-spacing: .5px; }
+    .doc .logo-box img { max-width: 172px; height: auto; display: block; }
+    .doc .logo-box .l1 { font-size: 32px; font-weight: 900; letter-spacing: .5px; }
+    .doc .logo-box .l2 { font-size: 32px; font-weight: 900; letter-spacing: .5px; }
     .doc .logo-box .l3 { display: none; }
-    .doc .company { padding-left: 14px; vertical-align: middle; letter-spacing: .6px; }
-    .doc .company-name { font-size: 13px; font-weight: normal; letter-spacing: 1.2px; margin-bottom: 1px; }
+    .doc .company { padding-left: 16px; vertical-align: middle; letter-spacing: .6px; }
+    .doc .company-name { font-size: 13px; font-weight: bold; letter-spacing: 1.2px; margin-bottom: 1px; }
     .doc .company div { font-size: 11px; line-height: 1.55; }
 
     /* Top-right block: project details + meta */
     .doc .topright { text-align: left; font-size: 11px; }
-    .doc .topright .pd-label { font-weight: normal; }
+    .doc .topright .pd-label { font-weight: bold; }
     .doc .topright .pd-text { margin-bottom: 6px; }
-    .doc .meta-k { font-weight: normal; }
+    .doc .meta-k { font-weight: bold; }
     .doc .status-unpaid { color: var(--red); font-weight: normal; }
 
-    /* Only the document title is bold */
     .doc .doc-title { text-align: center; font-size: 26px; font-weight: 800; letter-spacing: 2px; color: #222; margin: 6px 0 10px; }
 
     .doc .attn { margin-top: 2px; }
-    .doc .attn-label { font-weight: normal; }
-    .doc .section-label { font-weight: normal; margin: 8px 0 3px; }
+    .doc .attn-label { font-weight: bold; }
+    .doc .section-label { font-weight: bold; margin: 8px 0 3px; }
     .doc .project { margin-bottom: 6px; }
 
     /* Items table */
     .doc table.items { border-collapse: collapse; width: 100%; }
     .doc table.items th, .doc table.items td { border: 1px solid var(--line); padding: 6px 7px; vertical-align: top; }
-    .doc table.items thead th { background: var(--brand); color: #fff; font-size: 11px; text-align: center; }
+    .doc table.items thead th { background: var(--brand); color: #fff; font-size: 13px; text-align: center; font-weight: bold; }
     /* Invoice & delivery order use the dark wine header */
     .doc--invoice table.items thead th,
     .doc--delivery_order table.items thead th { background: var(--maroon); }
@@ -73,16 +72,16 @@
     .doc .text-center { text-align: center; }
 
     /* Quotation: yellow TOTAL row inside the table */
-    .doc table.items tfoot td { font-weight: normal; }
+    .doc table.items tfoot td { font-weight: bold; }
     .doc table.items tfoot .total-row td { background: var(--yellow); font-size: 13px; }
 
     /* Invoice: plain totals block below the table */
     .doc table.totals { border-collapse: collapse; float: right; margin-top: 8px; }
-    .doc table.totals td { padding: 2px 6px; font-size: 12px; }
-    .doc table.totals .tk { text-align: right; font-weight: normal; }
+    .doc table.totals td { padding: 2px 6px; font-size: 12px; font-weight: bold; }
+    .doc table.totals .tk { text-align: right; }
     .doc table.totals .tv { text-align: right; width: 110px; }
     .doc table.totals .balance .tk,
-    .doc table.totals .balance .tv { color: var(--red); font-weight: normal; font-size: 13px; }
+    .doc table.totals .balance .tv { color: var(--red); font-size: 13px; }
 
     /* Terms & footer — a bit more breathing room */
     .doc .band-bottom { padding: 24px 34px 30px; }

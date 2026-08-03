@@ -12,10 +12,6 @@
         .sheet { background: #fff; width: 210mm; min-height: 297mm; margin: 16px auto; padding: 0;
             box-sizing: border-box; box-shadow: 0 1px 8px rgba(0,0,0,.2); }
 
-        /* Fill most of the page so the footer sits near the bottom on short
-           documents, while long item lists still flow onto more pages. */
-        .sheet .doc .body { min-height: 172mm; }
-
         /* Clean pagination for long item lists */
         .sheet table.items { page-break-inside: auto; }
         .sheet table.items tr { page-break-inside: auto; }         /* let a tall item flow across pages so page 1 fills up */
@@ -35,8 +31,14 @@
             html, body { background: #fff; }
             .toolbar { display: none; }
             .sheet { width: auto; min-height: auto; margin: 0; padding: 0; box-shadow: none; }
-            /* margin:0 removes the browser's URL / page-number header & footer */
-            @page { size: A4; margin: 0; }
+
+            /* Pin the Terms footer to the very bottom of EVERY printed page.
+               @page reserves 46mm at the bottom so the item table never runs
+               under the footer; the footer (bottom:0) fills that reserved band. */
+            .doc .band-bottom { position: fixed; left: 0; right: 0; bottom: 0; }
+            /* margin:0 on top/sides removes the browser's URL header; the bottom
+               reserve holds the footer. */
+            @page { size: A4; margin: 0 0 46mm 0; }
         }
     </style>
 </head>

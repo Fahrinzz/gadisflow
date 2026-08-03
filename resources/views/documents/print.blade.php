@@ -31,14 +31,9 @@
             html, body { background: #fff; }
             .toolbar { display: none; }
             .sheet { width: auto; min-height: auto; margin: 0; padding: 0; box-shadow: none; }
-
-            /* Pin the Terms footer to the very bottom of EVERY printed page.
-               @page reserves 46mm at the bottom so the item table never runs
-               under the footer; the footer (bottom:0) fills that reserved band. */
-            .doc .band-bottom { position: fixed; left: 0; right: 0; bottom: 0; }
-            /* margin:0 on top/sides removes the browser's URL header; the bottom
-               reserve holds the footer. */
-            @page { size: A4; margin: 0 0 46mm 0; }
+            /* margin:0 removes the browser's URL / page-number header & footer.
+               Terms footer flows once, right after the content (no repeat). */
+            @page { size: A4; margin: 0; }
         }
     </style>
 </head>

@@ -15,8 +15,8 @@
         /* Fixed-height footer + filled body so the Terms band always reaches the
            page bottom regardless of how many term lines there are.
            header (~57mm) + body (188mm) + footer (52mm) ≈ 297mm (A4). */
-        .sheet .doc .band-bottom { min-height: 66mm; }
-        .sheet .doc .body { min-height: 172mm; }
+        .sheet .doc .band-bottom { min-height: 60mm; }
+        .sheet .doc .body { min-height: 150mm; }
 
         /* Clean pagination for long item lists */
         .sheet table.items { page-break-inside: auto; }

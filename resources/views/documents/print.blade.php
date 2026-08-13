@@ -12,6 +12,10 @@
         .sheet { background: #fff; width: 210mm; min-height: 297mm; margin: 16px auto; padding: 0;
             box-sizing: border-box; box-shadow: 0 1px 8px rgba(0,0,0,.2); }
 
+        /* Make the white body fill most of the page so the Terms footer sits at
+           the bottom on single-page docs; long lists still push it onto page 2. */
+        .sheet .doc .body { min-height: 172mm; }
+
         /* Clean pagination for long item lists */
         .sheet table.items { page-break-inside: auto; }
         .sheet table.items tr { page-break-inside: auto; }         /* let a tall item flow across pages so page 1 fills up */

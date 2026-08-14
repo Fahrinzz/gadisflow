@@ -12,12 +12,6 @@
         .sheet { background: #fff; width: 210mm; min-height: 297mm; margin: 16px auto; padding: 0;
             box-sizing: border-box; box-shadow: 0 1px 8px rgba(0,0,0,.2); }
 
-        /* Fixed-height footer + filled body so the Terms band always reaches the
-           page bottom regardless of how many term lines there are.
-           header (~57mm) + body (188mm) + footer (52mm) ≈ 297mm (A4). */
-        .sheet .doc .band-bottom { min-height: 69mm; }
-        .sheet .doc .body { min-height: 165mm; }
-
         /* Clean pagination for long item lists */
         .sheet table.items { page-break-inside: auto; }
         .sheet table.items tr { page-break-inside: auto; }         /* let a tall item flow across pages so page 1 fills up */
@@ -37,8 +31,11 @@
             html, body { background: #fff; }
             .toolbar { display: none; }
             .sheet { width: auto; min-height: auto; margin: 0; padding: 0; box-shadow: none; }
-            /* margin:0 removes the browser's URL / page-number header & footer.
-               Terms footer flows once, right after the content (no repeat). */
+            /* Single-page docs (marked by JS below): stick the Terms footer to the
+               very bottom so it never floats. Multi-page docs keep the footer in
+               normal flow (after the content) so it never overlaps the item table. */
+            body.stick-footer .doc .band-bottom { position: fixed; left: 0; right: 0; bottom: 0; }
+            /* margin:0 removes the browser's URL / page-number header & footer. */
             @page { size: A4; margin: 0; }
         }
     </style>
@@ -51,8 +48,21 @@
     <div class="sheet">
         @include('documents._render')
     </div>
-    @if($autoPrint)
-    <script>window.addEventListener('load', () => setTimeout(() => window.print(), 350));</script>
-    @endif
+    <script>
+    window.addEventListener('load', function () {
+        // If the whole document (header + body + footer) fits on one A4 page,
+        // stick the footer to the page bottom. Otherwise leave it flowing so it
+        // never overlaps the item table on multi-page prints.
+        try {
+            var top = document.querySelector('.band-top');
+            var body = document.querySelector('.body');
+            var footer = document.querySelector('.band-bottom');
+            var pagePx = 1122; // A4 height at 96dpi with margin:0
+            var used = (top ? top.offsetHeight : 0) + (body ? body.offsetHeight : 0) + (footer ? footer.offsetHeight : 0);
+            if (used <= pagePx) document.body.classList.add('stick-footer');
+        } catch (e) {}
+        @if($autoPrint) setTimeout(function () { window.print(); }, 350); @endif
+    });
+    </script>
 </body>
 </html>

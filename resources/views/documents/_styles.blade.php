@@ -27,7 +27,7 @@
 
     /* Pink header & footer bands; white body in between */
     .doc .band { background: var(--band); padding: 20px 34px; }
-    .doc .band-top { padding: 26px 34px; }
+    .doc .band-top { padding: 14px 34px; }
     .doc .body { padding: 22px 34px 26px; background: #fff; }
     .doc .mid { padding: 14px 34px; background: #fff; }   /* legacy, kept for safety */
 
@@ -44,7 +44,7 @@
         line-height: .92;
         font-style: italic;
     }
-    .doc .logo-box img { max-width: 172px; height: auto; display: block; }
+    .doc .logo-box img { max-width: 210px; height: auto; display: block; }
     .doc .logo-box .l1 { font-size: 32px; font-weight: 900; letter-spacing: .5px; }
     .doc .logo-box .l2 { font-size: 32px; font-weight: 900; letter-spacing: .5px; }
     .doc .logo-box .l3 { display: none; }

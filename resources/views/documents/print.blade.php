@@ -16,7 +16,7 @@
         .sheet table.items { page-break-inside: auto; }
         .sheet table.items tr { page-break-inside: auto; }         /* let a tall item flow across pages so page 1 fills up */
         .sheet table.items tfoot tr { page-break-inside: avoid; }  /* but keep the TOTAL row intact */
-        .sheet table.items thead { display: table-header-group; }  /* repeat column headers each page */
+        .sheet table.items thead { display: table-row-group; }     /* header once (keeps flow continuous so footer lands right) */
         .sheet table.items tfoot { display: table-row-group; }     /* TOTAL row shows once, at the end */
 
         .toolbar { position: sticky; top: 0; background: #212529; color: #fff; padding: 10px 16px; text-align: center; }
@@ -31,10 +31,12 @@
             html, body { background: #fff; }
             .toolbar { display: none; }
             .sheet { width: auto; min-height: auto; margin: 0; padding: 0; box-shadow: none; }
-            /* Single-page docs (marked by JS below): stick the Terms footer to the
-               very bottom so it never floats. Multi-page docs keep the footer in
-               normal flow (after the content) so it never overlaps the item table. */
-            body.stick-footer .doc .band-bottom { position: fixed; left: 0; right: 0; bottom: 0; }
+            .doc .band-bottom { page-break-inside: avoid; break-inside: avoid; }
+            /* Multi-page: the tfoot Terms band sits at the bottom of every page. */
+            .doc .pagewrap tfoot { display: table-footer-group; }
+            /* Single-page (marked by JS): pin the footer to the very bottom so it
+               doesn't float right under the content. */
+            body.one-page .doc .band-bottom { position: fixed; left: 0; right: 0; bottom: 0; }
             /* margin:0 removes the browser's URL / page-number header & footer. */
             @page { size: A4; margin: 0; }
         }
@@ -50,18 +52,14 @@
     </div>
     <script>
     window.addEventListener('load', function () {
-        // If the whole document (header + body + footer) fits on one A4 page,
-        // stick the footer to the page bottom. Otherwise leave it flowing so it
-        // never overlaps the item table on multi-page prints.
+        // One page? mark it so the footer can be pinned to the very bottom.
         try {
-            var top = document.querySelector('.band-top');
-            var body = document.querySelector('.body');
-            var footer = document.querySelector('.band-bottom');
-            var pagePx = 1122; // A4 height at 96dpi with margin:0
-            var used = (top ? top.offsetHeight : 0) + (body ? body.offsetHeight : 0) + (footer ? footer.offsetHeight : 0);
-            if (used <= pagePx) document.body.classList.add('stick-footer');
+            var wrap = document.querySelector('.pagewrap');
+            if (wrap && wrap.getBoundingClientRect().height <= 1122) {
+                document.body.classList.add('one-page');
+            }
         } catch (e) {}
-        @if($autoPrint) setTimeout(function () { window.print(); }, 350); @endif
+        @if($autoPrint) setTimeout(function () { window.print(); }, 400); @endif
     });
     </script>
 </body>

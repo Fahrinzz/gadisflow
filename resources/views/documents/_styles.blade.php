@@ -25,6 +25,12 @@
     }
     .doc .w100 { width: 100%; border-collapse: collapse; }
 
+    /* Page wrapper: tbody holds the content, tfoot holds the Terms footer so the
+       browser repeats it at the bottom of every printed page (never floats). */
+    .doc .pagewrap { width: 100%; border-collapse: collapse; }
+    .doc .pagewrap > tbody > tr > td,
+    .doc .pagewrap > tfoot > tr > td { padding: 0; border: 0; vertical-align: top; }
+
     /* Pink header & footer bands; white body in between */
     .doc .band { background: var(--band); padding: 20px 34px; }
     .doc .band-top { padding: 2px 34px; }

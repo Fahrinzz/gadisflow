@@ -33,7 +33,7 @@
 
     /* Pink header & footer bands; white body in between */
     .doc .band { background: var(--band); padding: 20px 34px; }
-    .doc .band-top { padding: 5px 34px; }
+    .doc .band-top { padding: 3px 34px; }
     .doc .body { padding: 22px 34px 26px; background: #fff; }
     .doc .mid { padding: 14px 34px; background: #fff; }   /* legacy, kept for safety */
 
@@ -50,13 +50,13 @@
         line-height: .92;
         font-style: italic;
     }
-    .doc .logo-box img { max-width: 200px; height: auto; display: block; }
+    .doc .logo-box img { max-width: 175px; height: auto; display: block; }
     .doc .logo-box .l1 { font-size: 32px; font-weight: 900; letter-spacing: .5px; }
     .doc .logo-box .l2 { font-size: 32px; font-weight: 900; letter-spacing: .5px; }
     .doc .logo-box .l3 { display: none; }
     .doc .company { padding-left: 16px; vertical-align: middle; letter-spacing: .6px; }
     .doc .company-name { font-size: 13px; font-weight: bold; letter-spacing: 1.2px; margin-bottom: 1px; }
-    .doc .company div { font-size: 11px; line-height: 1.75; }
+    .doc .company div { font-size: 11px; line-height: 1.5; }
 
     /* Top-right block: project details + meta */
     .doc .topright { text-align: left; font-size: 11px; }

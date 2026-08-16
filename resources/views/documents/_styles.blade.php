@@ -33,7 +33,7 @@
 
     /* Pink header & footer bands; white body in between */
     .doc .band { background: var(--band); padding: 20px 34px; }
-    .doc .band-top { padding: 8px 34px; }
+    .doc .band-top { padding: 14px 34px; }
     .doc .body { padding: 22px 34px 26px; background: #fff; }
     .doc .mid { padding: 14px 34px; background: #fff; }   /* legacy, kept for safety */
 

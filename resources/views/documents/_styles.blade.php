@@ -56,7 +56,7 @@
     .doc .logo-box .l3 { display: none; }
     .doc .company { padding-left: 16px; vertical-align: middle; letter-spacing: .6px; }
     .doc .company-name { font-size: 13px; font-weight: bold; letter-spacing: 1.2px; margin-bottom: 1px; }
-    .doc .company div { font-size: 11px; line-height: 1.5; }
+    .doc .company div { font-size: 11px; line-height: 1.7; }
 
     /* Top-right block: project details + meta */
     .doc .topright { text-align: left; font-size: 11px; }

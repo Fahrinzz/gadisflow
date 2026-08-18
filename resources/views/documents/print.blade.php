@@ -35,6 +35,11 @@
             .toolbar { display: none; }
             .sheet { width: auto; min-height: auto; margin: 0; padding: 0; box-shadow: none; }
             .doc .band-bottom { page-break-inside: avoid; break-inside: avoid; }
+            /* The Terms footer lives in the page wrapper's <tfoot>; every browser
+               places a table-footer-group at the bottom of each printed page. */
+            .doc .pagewrap tfoot { display: table-footer-group; }
+            /* Single-page docs (JS-marked): pin it to the very bottom instead. */
+            body.one-page .doc .band-bottom { position: fixed; left: 0; right: 0; bottom: 0; }
             /* margin:0 removes the browser's URL / page-number header & footer. */
             @page { size: A4; margin: 0; }
         }
@@ -49,44 +54,16 @@
         @include('documents._render')
     </div>
     <script>
-    // Place the Terms footer ONCE, at the bottom of the LAST page.
-    // Chrome does NOT split tall table rows across pages — it moves a whole row
-    // to the next page, leaving a gap. So we simulate that pagination to find the
-    // footer's true printed position, then add a top margin to drop it to the
-    // bottom of its page.
-    function placeFooter() {
-        try {
-            var sheet = document.querySelector('.sheet');
-            var footer = document.querySelector('.band-bottom');
-            if (!sheet || !footer) return;
-            var pageH = 1122; // A4 @96dpi, @page margin:0
-            footer.style.marginTop = '0px';
-            var sTop = sheet.getBoundingClientRect().top;
-
-            // Simulate the page-break gaps caused by whole rows that don't fit.
-            var gap = 0;
-            var rows = document.querySelectorAll('.items tbody tr, .items tfoot tr');
-            rows.forEach(function (r) {
-                var rect = r.getBoundingClientRect();
-                var top = (rect.top - sTop) + gap;
-                var h = rect.height;
-                if (h > 0 && h <= pageH) {
-                    if (Math.floor(top / pageH) !== Math.floor((top + h - 1) / pageH)) {
-                        gap += (Math.floor((top + h - 1) / pageH) * pageH) - top;
-                    }
-                }
-            });
-
-            var fr = footer.getBoundingClientRect();
-            var naturalBottom = (fr.top - sTop) + fr.height + gap; // true printed bottom
-            var target = Math.ceil((naturalBottom - 1) / pageH) * pageH;
-            var push = target - naturalBottom;
-            if (push > 2 && push < pageH - 2) footer.style.marginTop = Math.round(push) + 'px';
-        } catch (e) {}
-    }
     window.addEventListener('load', function () {
-        placeFooter();
-        @if($autoPrint) setTimeout(function () { window.print(); }, 450); @endif
+        // If everything fits on one page, pin the footer to the very bottom.
+        // Otherwise the <tfoot> keeps it at the bottom of every page (all browsers).
+        try {
+            var wrap = document.querySelector('.pagewrap');
+            if (wrap && wrap.getBoundingClientRect().height <= 1120) {
+                document.body.classList.add('one-page');
+            }
+        } catch (e) {}
+        @if($autoPrint) setTimeout(function () { window.print(); }, 400); @endif
     });
     </script>
 </body>

@@ -5,6 +5,7 @@
     $colspan = $showPrice ? 4 : 3;
 @endphp
 <div class="doc doc--{{ $document->type }}">
+<table class="pagewrap"><tbody><tr><td>
 
     {{-- ===== HEADER BAND (pink): logo + company only ===== --}}
     <div class="band band-top">
@@ -121,7 +122,10 @@
 
     </div>
 
-    {{-- ===== FOOTER BAND (pink): terms ===== --}}
+</td></tr></tbody>
+<tfoot><tr><td>
+    {{-- ===== FOOTER BAND (pink): terms — in <tfoot> so every browser (Chrome,
+         Safari, Edge) places it at the bottom of each printed page ===== --}}
     <div class="band band-bottom">
         @if($document->terms)
         <div class="section-label">TERMS &amp; CONDITIONS:</div>
@@ -136,4 +140,6 @@
         @endif
         <div class="thanks">Thank you.</div>
     </div>
+</td></tr></tfoot>
+</table>
 </div>

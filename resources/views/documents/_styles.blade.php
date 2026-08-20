@@ -11,10 +11,16 @@
         color: #1a1a1a;
         font-size: 12px;
         line-height: 1.45;
+        font-weight: 400;                    /* force normal weight everywhere */
+        -webkit-font-smoothing: antialiased; /* stop macOS/Safari rendering text heavy/bold */
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
         -webkit-print-color-adjust: exact;
         color-adjust: exact;                 /* legacy Firefox */
         print-color-adjust: exact;
     }
+    /* Item descriptions must stay normal weight (never inherit bold on any browser) */
+    .doc table.items td, .doc .desc, .doc .terms { font-weight: 400; }
     /* Force every branded element (pink bands, table headers, yellow TOTAL)
        to keep its colour when printed — on Chrome, Edge, Firefox & Safari. */
     .doc, .doc * {

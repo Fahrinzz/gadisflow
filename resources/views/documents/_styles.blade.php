@@ -7,7 +7,7 @@
         --line: #b96b83;           /* table borders                   */
         --yellow: #ffef3d;         /* quotation total row             */
         --red: #d10000;            /* invoice balance / unpaid        */
-        font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+        font-family: "Inter", "Segoe UI", Arial, Helvetica, sans-serif;
         color: #1a1a1a;
         font-size: 12px;
         line-height: 1.45;
